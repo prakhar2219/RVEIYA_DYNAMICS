@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg"
+     viewBox="0 0 300 640" width="300" height="640" role="img" aria-label="Phone frame">
+  <defs>
+    <!-- subtle bezel gradient -->
+   <linearGradient id="bezelGrad" x1="0" x2="1" y1="0" y2="1">
+  <stop offset="0" stop-color="#FFD700"/>    <!-- Light Gold -->
+  <stop offset="1" stop-color="#B8860B"/>    <!-- Deep Golden -->
+</linearGradient>
+    <!-- inner gloss -->
+    <linearGradient id="gloss" x1="0" x2="0" y1="0" y2="1">
+      <stop offset="0" stop-color="#ffffff" stop-opacity="0.06"/>
+      <stop offset="0.5" stop-color="#ffffff" stop-opacity="0.02"/>
+      <stop offset="1" stop-color="#000000" stop-opacity="0.00"/>
+    </linearGradient>
+
+    <!-- mask that makes the screen area transparent (black area inside mask = hole) -->
+    <mask id="screenCut">
+      <!-- full canvas visible -->
+      <rect x="0" y="0" width="300" height="640" fill="white" />
+      <!-- draw the inner screen shape in black to create a transparent hole -->
+      <!-- inner rect parameters (adjust inset/rx to match your use) -->
+      <rect x="28" y="86" width="244" height="468" rx="28" ry="28" fill="black" />
+    </mask>
+
+    <!-- drop shadow filter for bezel -->
+    <filter id="shadow" x="-50%" y="-50%" width="200%" height="200%">
+      <feDropShadow dx="0" dy="14" stdDeviation="18" flood-color="#000" flood-opacity="0.45"/>
+    </filter>
+  </defs>
+
+  <!-- bezel shape (we'll draw a full rounded rect and then mask out the inner screen) -->
+  <g filter="url(#shadow)">
+    <!-- outer body (will be masked so inner screen becomes transparent) -->
+    <rect x="8" y="8" width="284" height="624" rx="48" ry="48" fill="url(#bezelGrad)" mask="url(#screenCut)"/>
+  </g>
+
+  <!-- thin chrome edge -->
+  <rect x="12" y="12" width="276" height="616" rx="44" ry="44" fill="none" stroke="#DAA520" stroke-opacity="0.35" stroke-width="1"/>
+
+  <!-- small metal rim highlight on one side -->
+  <path d="M14 40 Q14 36 18 34 L18 606 Q14 604 14 600 Z" fill="#000" fill-opacity="0.18"/>
+
+  <!-- notch (top center) — visible part in bezel, not in screen hole -->
+  <g transform="translate(120,18)">
+    <rect x="-40" y="-2" width="80" height="22" rx="9" ry="9" fill="#080808" />
+    <!-- camera dot -->
+    <circle cx="16" cy="10" r="3.6" fill="#3a3a3a" stroke="#000" stroke-opacity="0.6" stroke-width="0.6"/>
+    <!-- sensor small -->
+    <circle cx="-10" cy="10" r="2.2" fill="#2f2f2f"/>
+  </g>
+
+  <!-- side buttons (simple rectangles) -->
+  <rect x="6" y="120" width="3" height="60" rx="1.5" fill="#B8860B" fill-opacity="0.9"/>
+  <rect x="6" y="200" width="3" height="40" rx="1.5" fill="#B8860B" fill-opacity="0.9"/>
+
+  <!-- right side power button -->
+  <rect x="291" y="200" width="6" height="80" rx="3" fill="#B8860B" fill-opacity="0.9"/>
+
+  <!-- small bottom mic/port indicator -->
+  <rect x="130" y="612" width="40" height="6" rx="3" fill="#B8860B" fill-opacity="0.9"/>
+
+  <!-- subtle top glass gloss overlay on bezel -->
+  <rect x="14" y="14" width="272" height="300" rx="40" ry="40" fill="url(#gloss)" opacity="0.9" />
+
+  <!-- inner decorative rounded corner (very subtle) -->
+  <rect x="28" y="86" width="244" height="468" rx="28" ry="28" fill="none" stroke="#000" stroke-opacity="0.06" stroke-width="1"/>
+</svg>
